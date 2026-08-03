@@ -4,20 +4,189 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-	<link
-	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-	>
-    <title>IFTS Apps</title>
+    <meta name="description" content="Documentation and downloads for IFTS applications.">
+    <title>IFTS Applications</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-card: #ffffff;
+        --fg: #14181d;
+        --fg-muted: #5b6672;
+        --border: #e3e8ee;
+        --accent: #0b6bcb;
+        --shadow: 0 1px 2px rgba(20, 24, 29, .06), 0 8px 24px rgba(20, 24, 29, .06);
+        --radius: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101418;
+          --bg-card: #171c22;
+          --fg: #e8ecf1;
+          --fg-muted: #98a4b0;
+          --border: #262d35;
+          --accent: #62a8f5;
+          --shadow: none;
+        }
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 60rem;
+        margin: 0 auto;
+        padding: clamp(3rem, 10vh, 7rem) 1.5rem 4rem;
+      }
+
+      header { margin-bottom: 3rem; }
+
+      .brand {
+        display: inline-block;
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: .75rem;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 5vw, 2.75rem);
+        line-height: 1.15;
+        letter-spacing: -.02em;
+        margin: 0 0 .75rem;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 42ch;
+        color: var(--fg-muted);
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg-card);
+        color: inherit;
+        text-decoration: none;
+        transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        border-color: var(--accent);
+        box-shadow: var(--shadow);
+        transform: translateY(-2px);
+      }
+
+      .card:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: -.01em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--fg-muted);
+        font-size: .925rem;
+      }
+
+      .card .more {
+        margin-top: auto;
+        padding-top: 1rem;
+        font-size: .875rem;
+        font-weight: 500;
+        color: var(--accent);
+      }
+
+      .card:hover .more::after { transform: translateX(3px); }
+
+      .card .more::after {
+        content: "→";
+        display: inline-block;
+        margin-left: .35rem;
+        transition: transform .15s ease;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        color: var(--fg-muted);
+        font-size: .875rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem 1.5rem;
+        justify-content: space-between;
+      }
+
+      footer a { color: inherit; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card, .card .more::after { transition: none; }
+        .card:hover, .card:focus-visible { transform: none; }
+      }
+    </style>
   </head>
   <body>
-    <main class="container">
-      <h1>IFTS Applications</h1>
-		<nav>
-			<ul>
-				<li><a href="/GRS/">Global Reporting Software</a></li>
-			</ul>
-		</nav>
-    </main>
+    <div class="page">
+      <header>
+        <span class="brand">IFTS</span>
+        <h1>IFTS Applications</h1>
+        <p class="lede">Documentation, release notes and downloads for our softwares.</p>
+      </header>
+
+      <main>
+        <div class="grid">
+          <a class="card" href="/GRS/">
+            <h2>Global Reporting Software</h2>
+            <p>Centralised test reporting and data export across IFTS benches.</p>
+            <span class="more">Open documentation</span>
+          </a>
+
+          <a class="card" href="/CFC/">
+            <h2>CFC</h2>
+            <p>Filtration acquisistion software.</p>
+            <span class="more">Open documentation</span>
+          </a>
+
+          <a class="card" href="/CellFit/">
+            <h2>CellFit</h2>
+            <p>Filtration treatment software.</p>
+            <span class="more">Open documentation</span>
+          </a>
+        </div>
+      </main>
+
+      <footer>
+        <span>© IFTS — <a href="https://www.ifts-sls.com">ifts-sls.com</a></span>
+        <span><a href="mailto:product.support@ifts-sls.com">product.support@ifts-sls.com</a></span>
+      </footer>
+    </div>
   </body>
 </html>
